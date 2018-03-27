@@ -21,7 +21,12 @@ int main(void){
     int _socket, cant_recv, new_socket, len;
     struct sockaddr_in direcc;
     /*Creamos el socket TCP (SOCK_STREAM)*/
-    _socket = socket(AF_INET, SOCK_STREAM, 0);
+    if((_socket = socket(AF_INET, SOCK_STREAM, 0)) == -1){
+        perror("*** ERROR AL CREAR EL SOCKET ***");
+        return 1;
+    }
+
+    /*limpiamos la estructura de datos*/
     bzero((char *) &direcc, sizeof(direcc));
 
     direcc.sin_family = AF_INET;
@@ -30,7 +35,10 @@ int main(void){
 
     len = sizeof(struct sockaddr_in);
     /*Lo asociamos a una dirección y un puerto*/
-    bind(_socket, (struct sockaddr *) &direcc, len);
+    if(bind(_socket, (struct sockaddr *) &direcc, len) < 0){
+        perror("*** ERROR AL ASOCIAR EL SOCKET ***");
+        return 1;
+    }
     /*Lo ponemos a la escucha de clientes que se quieran conectar*/
     listen(_socket, 5);
 
