@@ -12,7 +12,7 @@
 
 int main(void){
 
-    char buf[BUFF_SIZE];
+    char buf[BUFF_SIZE], msj[BUFF_SIZE];
     int _socket, cant_recv, new_socket, len;
     struct sockaddr_in direcc;
     _socket = socket(AF_INET, SOCK_STREAM, 0);
@@ -31,9 +31,11 @@ int main(void){
         new_socket = accept(_socket, (struct sockaddr *) &direcc, (socklen_t *) &len);
         while ((cant_recv = recv(new_socket, buf, BUFF_SIZE, 0)) > 0){
             /*hacemos eco*/
-            write(new_socket, buf, strlen(buf)+1);
+            sprintf(msj, "SERVIDOR DICE: %s", buf);
+            write(new_socket, msj, strlen(msj)+1);
             printf("Eco... %s", buf);
             bzero(buf, BUFF_SIZE);
+            bzero(msj, BUFF_SIZE);
         }
     }
 
