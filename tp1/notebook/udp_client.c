@@ -39,6 +39,7 @@ int main(void)
             return 1;
         }
          
+        
         //recibimos respuesta del servidor
         if (recvfrom(_socket, res, BUFF_SIZE, 0, (struct sockaddr *) &server, (socklen_t *) &slen) == -1)
         {

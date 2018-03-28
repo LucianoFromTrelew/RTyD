@@ -48,11 +48,12 @@ int main(void){
         new_socket = accept(_socket, (struct sockaddr *) &direcc, (socklen_t *) &len);
         while ((cant_recv = recv(new_socket, buf, BUFF_SIZE, 0)) > 0){
             printf("Mensaje recibido: %s", buf);
+            bzero(buf, BUFF_SIZE);
         }
+        close(new_socket);
     }
 
     /*Cerramos sockets y finalizamos*/
-    close(new_socket);
     close(_socket);
     exit(0);
 }
