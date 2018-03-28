@@ -37,9 +37,9 @@ int main(void){
             bzero(buf, BUFF_SIZE);
             bzero(msj, BUFF_SIZE);
         }
+        close(new_socket);
     }
 
-    close(new_socket);
     close(_socket);
     exit(0);
 }

@@ -97,9 +97,9 @@ int main(void){
             /*write(new_socket, buf, cant_recv);*/
             printf("Mensaje recibido: %s", buf);
         }
+        close(new_socket);
     }
 
-    close(new_socket);
     close(_socket);
     exit(0);
 }

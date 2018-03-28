@@ -45,9 +45,9 @@ int main(void){
     while(1){
         new_socket = accept(_socket, (struct sockaddr *) &direcc, (socklen_t *) &len);
         while(write_socket(new_socket, WAIT_TIME) > 0){ }
+        close(new_socket);
     }
 
-    close(new_socket);
     close(_socket);
     exit(0);
 }

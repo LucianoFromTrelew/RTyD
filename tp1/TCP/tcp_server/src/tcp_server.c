@@ -50,10 +50,10 @@ int main(void){
             printf("Mensaje recibido: %s", buf);
             bzero(buf, BUFF_SIZE);
         }
+        close(new_socket);
     }
 
     /*Cerramos sockets y finalizamos*/
-    close(new_socket);
     close(_socket);
     exit(0);
 }

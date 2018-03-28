@@ -29,7 +29,6 @@ int main(void){
         accept_client(_socket, (struct sockaddr *) &direcc, (socklen_t *) &len);
     }
 
-    close(new_socket);
     close(_socket);
     exit(0);
 }
@@ -42,6 +41,7 @@ int accept_client(int sckt, struct sockaddr* addr, socklen_t *len){
         printf("Mensaje recibido: %s", buf);
         bzero(buf, BUFF_SIZE);
     }
+    close(new_socket);
 
     return 0;
 }
