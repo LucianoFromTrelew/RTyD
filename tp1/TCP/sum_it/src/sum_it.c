@@ -45,6 +45,8 @@ int main(void){
                 sprintf(msg, "Formato incorrecto\nUSO: NUM+NUM\n");
             }
             write(new_socket, msg, strlen(msg)+1);
+            bzero(buf, BUFF_SIZE);
+            bzero(msg, MSG_SIZE);
         }
     }
 

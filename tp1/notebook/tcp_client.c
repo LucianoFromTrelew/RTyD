@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<string.h>
+#include<strings.h>
 #include<unistd.h>
 #include<sys/socket.h>
 #include<arpa/inet.h>
@@ -60,6 +61,7 @@ int main(int argc , char *argv[])
              
             printf("Respuesta del servidor: %s\n", rta_server);
         }
+        bzero(msj, BUFF_SIZE);
     }
      
     /*Cerramos el socket y finalizamos*/

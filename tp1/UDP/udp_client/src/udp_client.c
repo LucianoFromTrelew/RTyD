@@ -39,7 +39,6 @@ int main(void)
             return 1;
         }
          
-        bzero(res, BUFF_SIZE);
         //recibimos respuesta del servidor
         if (recvfrom(_socket, res, BUFF_SIZE, 0, (struct sockaddr *) &server, (socklen_t *) &slen) == -1)
         {
@@ -48,6 +47,8 @@ int main(void)
         }
          
         printf("Respuesta del servidor: %s", res);
+        bzero(res, BUFF_SIZE);
+        bzero(msj, BUFF_SIZE);
     }
  
     close(_socket);

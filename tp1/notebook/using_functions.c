@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #define PORTNUMBER 12345
+#define BUFF_SIZE 1024
 int accept_client(int, struct sockaddr *, socklen_t *);
 int main(void){
 
@@ -36,9 +37,10 @@ int main(void){
 int accept_client(int sckt, struct sockaddr* addr, socklen_t *len){
     int new_socket = accept(sckt, addr, len);
     int cant_recv;
-    char buf[80];
+    char buf[BUFF_SIZE];
     while ((cant_recv = recv(new_socket, buf, sizeof(buf), 0)) > 0){
         printf("Mensaje recibido: %s", buf);
+        bzero(buf, BUFF_SIZE);
     }
 
     return 0;

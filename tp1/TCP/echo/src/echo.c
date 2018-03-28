@@ -33,6 +33,7 @@ int main(void){
             /*hacemos eco*/
             write(new_socket, buf, strlen(buf)+1);
             printf("Eco... %s", buf);
+            bzero(buf, BUFF_SIZE);
         }
     }
 
