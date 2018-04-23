@@ -8,6 +8,7 @@
 #define HOST "127.0.0.1"
 #define PORTNUMBER 12345
 #define BUFF_SIZE 1024
+#define EXIT_STRING "exit\n"
 
 int check_arg(int, char *, char *);
 
@@ -16,6 +17,7 @@ int main(int argc , char *argv[])
     int sock;
     struct sockaddr_in server;
     char msj[BUFF_SIZE], rta_server[BUFF_SIZE];
+    char *ret;
      
     //Creamos el socket
     sock = socket(AF_INET , SOCK_STREAM , 0);
@@ -36,14 +38,16 @@ int main(int argc , char *argv[])
         return 1;
     }
      
-    printf("Conectado a %s:%d\n", HOST, PORTNUMBER);
+    printf("Conectado a %s:%d (ingrese 'exit' para desconectarse)\n", HOST, PORTNUMBER);
      
     while(1)
     {
          
         //enviamos el mensaje al servidor
         printf("Ingrese su mensaje: ");
-        fgets(msj, BUFF_SIZE, stdin);
+        ret = fgets(msj, BUFF_SIZE, stdin);
+
+        if((strcmp(msj, EXIT_STRING) == 0) || ret == NULL) break;
 
         if( send(sock, msj, strlen(msj)+1, 0) < 0)
         {
@@ -65,6 +69,7 @@ int main(int argc , char *argv[])
     }
      
     /*Cerramos el socket y finalizamos*/
+    printf("Finalizando conexión...\n");
     close(sock);
     return 0;
 }

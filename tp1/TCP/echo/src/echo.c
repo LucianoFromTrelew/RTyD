@@ -29,14 +29,16 @@ int main(void){
     /*el servidor no muere cuando se desconecta el cliente */
     while(1){
         new_socket = accept(_socket, (struct sockaddr *) &direcc, (socklen_t *) &len);
+        printf("Nuevo cliente conectado!\n");
         while ((cant_recv = recv(new_socket, buf, BUFF_SIZE, 0)) > 0){
             /*hacemos eco*/
-            sprintf(msj, "SERVIDOR DICE: %s", buf);
+            sprintf(msj, "\nSERVIDOR DICE: %s", buf);
             write(new_socket, msj, strlen(msj)+1);
             printf("Eco... %s", buf);
             bzero(buf, BUFF_SIZE);
             bzero(msj, BUFF_SIZE);
         }
+        printf("Cliente desconectado...\n");
         close(new_socket);
     }
 
