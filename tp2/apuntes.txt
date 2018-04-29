@@ -45,3 +45,7 @@ tcpdump -n -r output.pcap
 -----------------------------------------
 wireshark ->
     statistics -> flow graph
+
+
+-----------------------------------------
+KUROSE, 278. Tamaño de ventana, después del gráfico de autómata finito
