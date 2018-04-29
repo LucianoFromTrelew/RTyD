@@ -28,7 +28,7 @@ Caso contrario (osea cuando la conexión ya está establecida y no está por cer
 Puertos altos los asigna automáticamente el SO
 
 
-Flags:
+Flags (tcpdump):
     * . -> ACK
     * S -> SYN
     * R -> RST
