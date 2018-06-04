@@ -6,7 +6,6 @@ unp-tp1-*
 unp-rtd-*
 
 #imagenes
-images/
 ### C ###
 # Prerequisites
 *.d
