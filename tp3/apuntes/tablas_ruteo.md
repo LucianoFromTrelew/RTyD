@@ -5,6 +5,11 @@
 
 Si se quiere evitar tabla de ruteo -> *Default Gateway*
 
+
+En una tabla de ruteo, pueden suceder dos casos particulares:
+    - Aparece un `0.0.0.0` del lado derecho: la dirección del lado izquierdo es la *dirección de red* (el nodo ya está conectado directamente a esa red por alguna de sus interfases)
+    - Aparece un `0.0.0.0` del lado izquierdo: *Default Gateway* => Significa que cualquier paquete que no caiga en las reglas anteriores se debe encaminar a la dirección de la derecha
+
 ---
 
 HOSTS:
