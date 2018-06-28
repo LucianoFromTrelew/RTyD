@@ -1,7 +1,12 @@
+## Tablas de ruteo
+
+### Columnas
+
 1. A dónde quiero llegar
     - Bits de red ó hosts (máscara /32)
 2. Cuál es el próximo salto
     - Dirección IP del proximo router con el que te vas a encontrar
+3. Cantidad de saltos hasta llegar a destino
 
 Si se quiere evitar tabla de ruteo -> *Default Gateway*
 
